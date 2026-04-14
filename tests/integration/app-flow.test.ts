@@ -20,6 +20,20 @@ describe('useTicTacToeGame', () => {
     expect(typeof result.current.restartGame).toBe('function');
   });
 
+  it('resolves a valid human move into exactly one automatic computer response', () => {
+    const { result } = renderHook(() => useTicTacToeGame());
+
+    act(() => {
+      result.current.playHumanMove(0);
+    });
+
+    expect(result.current.gameState).toEqual({
+      ...createInitialGameState(),
+      board: ['X', 'empty', 'empty', 'empty', 'O', 'empty', 'empty', 'empty', 'empty'],
+      currentPlayer: 'human',
+    });
+  });
+
   it('keeps exposed state unchanged after rejected human moves', () => {
     const { result } = renderHook(() => useTicTacToeGame());
     const initialState = result.current.gameState;
@@ -31,7 +45,8 @@ describe('useTicTacToeGame', () => {
     const stateAfterValidMove = result.current.gameState;
     expect(stateAfterValidMove).not.toBe(initialState);
     expect(stateAfterValidMove.board[0]).toBe('X');
-    expect(stateAfterValidMove.currentPlayer).toBe('computer');
+  expect(stateAfterValidMove.board[4]).toBe('O');
+  expect(stateAfterValidMove.currentPlayer).toBe('human');
 
     act(() => {
       result.current.playHumanMove(0);
