@@ -60,6 +60,21 @@ select {
   padding: 1.5rem 2rem;
 }
 
+.app-panel-header {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.app-section-label {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #7dd7c4;
+  font-size: 0.78rem;
+}
+
 .app-kicker {
   margin: 0 0 0.75rem;
   text-transform: uppercase;
@@ -93,6 +108,62 @@ select {
   color: rgba(246, 239, 228, 0.86);
 }
 
+.status-panel {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.status-panel h3 {
+  margin: 0;
+}
+
+.status-panel p {
+  margin: 0.5rem 0 0;
+  color: rgba(246, 239, 228, 0.75);
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.game-cell {
+  aspect-ratio: 1;
+  border: 1px solid rgba(246, 239, 228, 0.12);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  font-weight: 700;
+  transition: border-color 120ms ease, transform 120ms ease;
+}
+
+.game-cell:enabled:hover {
+  border-color: rgba(125, 215, 196, 0.72);
+  transform: translateY(-1px);
+}
+
+.game-cell:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.restart-button {
+  border: 1px solid rgba(246, 239, 228, 0.2);
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  background: transparent;
+  color: inherit;
+}
+
+.restart-button:disabled {
+  opacity: 0.5;
+}
+
 .app-roadmap li + li {
   margin-top: 0.5rem;
 }
@@ -106,5 +177,9 @@ select {
   .app-hero,
   .app-panel {
     padding: 1.25rem;
+  }
+
+  .app-panel-header {
+    flex-direction: column;
   }
 }
