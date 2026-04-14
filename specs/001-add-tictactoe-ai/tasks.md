@@ -57,31 +57,31 @@
 
 ---
 
-## Phase 5: User Story 3 - Receive an Optimal Computer Response (Priority: P1)
+## Phase 5: User Story 4 - End the Game Correctly (Priority: P1)
+
+**Goal**: The deterministic engine detects wins and draws immediately, exposes terminal state correctly, and blocks further moves before later AI/UI milestones depend on that behavior.
+
+**Independent Test**: Run the terminal-state unit and orchestration coverage and verify all win lines, draw states, final-cell win precedence, `currentPlayer = none`, no computer move after a terminal human move, and blocked post-game input behavior.
+
+- [ ] T011 [US4] Add terminal-state unit coverage for row, column, diagonal, draw, final-cell win precedence, and terminal-state invariants in tests/unit/core/rules.test.ts and implement terminal evaluation semantics in src/game/core/rules.ts and src/game/core/state.ts
+- [ ] T012 [US4] Add terminal-state orchestration coverage in tests/integration/app-flow.test.ts and implement no-AI-on-terminal-human-move handling plus post-game input blocking in src/app/hooks/useTicTacToeGame.ts
+
+**Checkpoint**: The deterministic core rules stage is complete and safe for AI and playable UI work.
+
+---
+
+## Phase 6: User Story 3 - Receive an Optimal Computer Response (Priority: P1)
 
 **Goal**: After each valid human move in a non-terminal game, the computer responds automatically with deterministic unbeatable play, and the browser UI becomes minimally playable.
 
 **Independent Test**: Run the strategy unit tests, exhaustive non-loss validation, orchestration flow tests, and browser UI test to verify the computer always responds legally, prefers winning or blocking moves correctly, breaks ties by lowest row-major index, and never loses across deterministic validation.
 
-- [ ] T011 [US3] Add strategy unit coverage for immediate wins, immediate blocks, and lowest-index tie-breaking in tests/unit/ai/select-computer-move.test.ts and implement deterministic move selection in src/game/ai/selectComputerMove.ts
-- [ ] T012 [US3] Add exhaustive non-loss validation in tests/unit/ai/minimax-validation.test.ts and implement minimax scoring in src/game/ai/minimax.ts
-- [ ] T013 [US3] Add full-turn orchestration coverage in tests/integration/app-flow.test.ts and implement automatic computer-turn resolution in src/app/hooks/useTicTacToeGame.ts
-- [ ] T014 [US3] Add playable browser flow coverage in tests/ui/playable-game.test.tsx and implement the minimal clickable board UI in src/ui/components/GameBoard.tsx, src/ui/components/GameCell.tsx, and src/app/App.tsx
+- [ ] T013 [US3] Add strategy unit coverage for immediate wins, immediate blocks, and lowest-index tie-breaking in tests/unit/ai/select-computer-move.test.ts and implement deterministic move selection in src/game/ai/selectComputerMove.ts
+- [ ] T014 [US3] Add exhaustive non-loss validation in tests/unit/ai/minimax-validation.test.ts and implement minimax scoring in src/game/ai/minimax.ts
+- [ ] T015 [US3] Add full-turn orchestration coverage in tests/integration/app-flow.test.ts and implement automatic computer-turn resolution in src/app/hooks/useTicTacToeGame.ts
+- [ ] T016 [US3] Add playable browser flow coverage in tests/ui/playable-game.test.tsx and implement the minimal clickable board UI in src/ui/components/GameBoard.tsx, src/ui/components/GameCell.tsx, and src/app/App.tsx
 
 **Checkpoint**: User Story 3 delivers the first fully playable browser MVP with an unbeatable computer opponent.
-
----
-
-## Phase 6: User Story 4 - End the Game Correctly (Priority: P1)
-
-**Goal**: The system detects wins and draws immediately, exposes terminal state correctly, and blocks further moves after game over.
-
-**Independent Test**: Run the terminal-state unit, integration, and UI coverage and verify all win lines, draw states, final-cell win precedence, `currentPlayer = none`, and blocked post-game input behavior.
-
-- [ ] T015 [US4] Add terminal-state unit coverage for row, column, diagonal, draw, final-cell win precedence, and terminal lockout in tests/unit/core/rules.test.ts and implement terminal evaluation semantics in src/game/core/rules.ts and src/game/core/state.ts
-- [ ] T016 [US4] Add terminal-state orchestration and browser coverage in tests/integration/app-flow.test.ts and tests/ui/playable-game.test.tsx and implement terminal interaction blocking plus status rendering in src/ui/components/GameBoard.tsx and src/ui/components/GameStatusPanel.tsx
-
-**Checkpoint**: User Story 4 makes the browser MVP complete for core play and outcome handling.
 
 ---
 
@@ -119,7 +119,8 @@
 - [ ] T022 Create implementation-focused developer workflow notes in DEVELOPMENT.md
 - [ ] T023 [P] Document the implemented architecture and separation of concerns in docs/architecture.md
 - [ ] T024 [P] Document the implemented game rules, state transitions, and edge cases in docs/game-rules.md
-- [ ] T025 [P] Document the implemented strategy testing and optimality validation approach in docs/testing-optimality-validation.md
+- [ ] T025 [P] Document the implemented strategy testing and optimality validation approach in docs/testing.md
+- [ ] T026 Review README.md, DEVELOPMENT.md, specs/001-add-tictactoe-ai/quickstart.md, and docs/ content against the implemented code and test workflow to remove speculation and correct mismatches
 
 ---
 
@@ -131,20 +132,20 @@
 - **Foundational (Phase 2)**: Depends on Setup and blocks all user stories.
 - **User Story 1 (Phase 3)**: Depends on Foundational.
 - **User Story 2 (Phase 4)**: Depends on User Story 1 because move handling requires initialized game state.
-- **User Story 3 (Phase 5)**: Depends on User Story 2 because the computer can only respond after validated human moves exist.
-- **User Story 4 (Phase 6)**: Depends on User Story 3 because terminal-state handling must be verified in the fully playable flow.
-- **User Story 5 (Phase 7)**: Depends on User Story 4 because restart must reset both in-progress and terminal states.
-- **User Story 6 (Phase 8)**: Depends on User Story 4 and can complete after the exposed state and rendered status behavior are both stable.
+- **User Story 4 (Phase 5)**: Depends on User Story 2 because deterministic terminal-state behavior is part of the core rules stage.
+- **User Story 3 (Phase 6)**: Depends on User Story 4 because the computer-response loop and playable UI rely on completed terminal-state semantics.
+- **User Story 5 (Phase 7)**: Depends on User Story 3 because restart must reset both in-progress and terminal playable states.
+- **User Story 6 (Phase 8)**: Depends on User Story 3 and User Story 5 because stable state exposure is finalized after the playable flow and restart behavior are both complete.
 - **Documentation & Developer Experience (Phase 9)**: Depends on all implementation phases so docs reflect the implemented system rather than speculation.
 
 ### User Story Dependencies
 
 - **US1**: First independently testable engine slice.
 - **US2**: Builds on US1 state initialization but remains testable without UI.
-- **US3**: Builds on US2 and delivers the first playable browser MVP.
-- **US4**: Builds on US3 and finalizes game-over behavior.
-- **US5**: Builds on US4 terminal and in-progress flows.
-- **US6**: Builds on the stabilized orchestration and UI state presentation from US4 and US5.
+- **US4**: Builds on US2 and completes terminal-state engine behavior before AI/UI depend on it.
+- **US3**: Builds on US4 and delivers the first playable browser MVP.
+- **US5**: Builds on US3 terminal and in-progress flows.
+- **US6**: Builds on the stabilized orchestration and UI state presentation from US3 and US5.
 
 ### Within Each User Story
 
@@ -152,11 +153,12 @@
 - Pure core logic changes occur before orchestration changes.
 - Orchestration changes occur before UI rendering changes.
 - Exhaustive strategy validation is required before declaring the unbeatable AI complete.
+- Documentation review must occur after documentation creation tasks and before the feature is considered complete.
 
 ### Parallel Opportunities
 
 - `T002` and `T003` can run in parallel after `T001`.
-- `T023`, `T024`, and `T025` can run in parallel after implementation is complete.
+- `T023`, `T024`, and `T025` can run in parallel after `T021` and `T022` are complete.
 
 ---
 
@@ -165,7 +167,7 @@
 ```bash
 Task: "Document the implemented architecture and separation of concerns in docs/architecture.md"
 Task: "Document the implemented game rules, state transitions, and edge cases in docs/game-rules.md"
-Task: "Document the implemented strategy testing and optimality validation approach in docs/testing-optimality-validation.md"
+Task: "Document the implemented strategy testing and optimality validation approach in docs/testing.md"
 ```
 
 ---
@@ -175,17 +177,16 @@ Task: "Document the implemented strategy testing and optimality validation appro
 ### MVP First
 
 1. Complete Setup and Foundational phases.
-2. Complete User Stories 1 and 2 to establish deterministic engine behavior.
+2. Complete User Stories 1, 2, and 4 to establish deterministic engine behavior, including terminal-state rules.
 3. Complete User Story 3 to deliver the first playable browser MVP with unbeatable AI.
 4. Stop and validate the playable flow before proceeding.
 
 ### Incremental Delivery
 
-1. Deterministic engine: User Stories 1 and 2.
+1. Deterministic engine: User Stories 1, 2, and 4.
 2. Unbeatable computer strategy and playable web flow: User Story 3.
-3. Terminal-state correctness: User Story 4.
-4. Restart and exposed-status enhancements: User Stories 5 and 6.
-5. Documentation and developer experience updates: Phase 9.
+3. Restart and exposed-status enhancements: User Stories 5 and 6.
+4. Documentation and developer experience updates and review: Phase 9.
 
 ---
 
