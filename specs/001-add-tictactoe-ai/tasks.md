@@ -51,7 +51,7 @@
 **Independent Test**: Run the move-validation unit and orchestration tests and verify legal moves mutate only the targeted empty cell while occupied, out-of-range, and non-integer inputs leave the full state unchanged.
 
 - [x] T009 [US2] Add move-validation unit coverage for valid moves, occupied cells, out-of-range indexes, and non-integer inputs in tests/unit/core/rules.test.ts and implement single-move validation and human move application in src/game/core/rules.ts
-- [ ] T010 [US2] Add orchestration coverage for unchanged state after rejected moves in tests/integration/app-flow.test.ts and implement rejected-input handling in src/app/hooks/useTicTacToeGame.ts
+- [x] T010 [US2] Add orchestration coverage for unchanged state after rejected moves in tests/integration/app-flow.test.ts and implement rejected-input handling in src/app/hooks/useTicTacToeGame.ts
 
 **Checkpoint**: User Story 2 is independently functional through the pure engine and orchestration layer without UI dependency.
 
