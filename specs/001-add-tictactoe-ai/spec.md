@@ -128,8 +128,7 @@ The human player or calling system can inspect the current game state at any tim
 - **FR-001**: The system MUST represent the game board as a 3x3 grid exposed as a flat array of 9 cell values, with cells indexed 0 through 8 in row-major order.
 - **FR-002**: The system MUST support exactly two participants: one human player and one computer player.
 - **FR-003**: The system MUST assign the human player to mark X, assign the computer player to mark O, and designate the human player as the starting player for a new game.
-- **FR-004**: The system MUST maintain the current turn and expose which player is allowed to act next.
-- **FR-004**: The system MUST maintain the current turn and expose which player is allowed to act next, using `none` when the game is in a terminal state.
+- **FR-004**: The system MUST maintain the current turn and expose which player is allowed to act next, using none when the game is in a terminal state.
 - **FR-005**: The system MUST accept a human move only when the targeted cell index is one of 0 through 8, the cell is empty, and the game is ongoing.
 - **FR-006**: The system MUST reject a human move that targets an occupied cell or invalid cell without mutating the board, current turn, or game status.
 - **FR-007**: The system MUST alternate turns only after a valid move is applied.
