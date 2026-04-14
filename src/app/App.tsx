@@ -1,4 +1,3 @@
-import { createEmptyBoard } from '../game/core/state';
 import { GameBoard } from '../ui/components/GameBoard';
 import { GameStatusPanel } from '../ui/components/GameStatusPanel';
 import { RestartButton } from '../ui/components/RestartButton';
@@ -6,7 +5,13 @@ import { useTicTacToeGame } from './hooks/useTicTacToeGame';
 
 export function App() {
   const { gameState, playHumanMove, restartGame } = useTicTacToeGame();
-  const board = gameState?.board ?? createEmptyBoard();
+
+  const statusTitle =
+    gameState.status.kind === 'ongoing' ? 'Your move' : 'Round complete';
+  const statusDetail =
+    gameState.status.kind === 'ongoing'
+      ? 'Click an empty cell to place X. The computer will respond automatically as O.'
+      : 'No further moves are available in the current round.';
 
   return (
     <main className="app-shell">
@@ -28,12 +33,13 @@ export function App() {
           <RestartButton disabled onRestart={restartGame} />
         </div>
 
-        <GameStatusPanel
-          title={gameState ? 'Game state connected' : 'Game state wiring comes next'}
-          detail="The core rules, orchestration flow, and automatic computer turns will be implemented in the next phases."
-        />
+        <GameStatusPanel title={statusTitle} detail={statusDetail} />
 
-        <GameBoard cells={board} disabled onSelectCell={playHumanMove} />
+        <GameBoard
+          cells={gameState.board}
+          disabled={gameState.status.kind !== 'ongoing'}
+          onSelectCell={playHumanMove}
+        />
       </section>
 
       <section className="app-panel" aria-labelledby="implementation-roadmap-title">

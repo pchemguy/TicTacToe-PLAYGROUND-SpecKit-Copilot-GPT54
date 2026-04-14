@@ -14,7 +14,7 @@ export function GameBoard({ cells, disabled = false, onSelectCell }: GameBoardPr
         <GameCell
           key={index}
           cellIndex={index as CellIndex}
-          disabled={disabled}
+          disabled={disabled || cellValue !== 'empty'}
           onSelect={onSelectCell}
           value={cellValue}
         />
