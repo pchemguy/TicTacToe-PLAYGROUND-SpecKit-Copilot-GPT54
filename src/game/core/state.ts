@@ -9,6 +9,7 @@ import {
   ONGOING_STATUS,
   type CellIndex,
   type CurrentPlayer,
+  type GameState,
   type GameStatus,
 } from './types';
 
@@ -42,4 +43,14 @@ export function replaceBoardCell(
   const nextBoard = [...cloneBoard(board)];
   nextBoard[cellIndex] = nextValue;
   return nextBoard;
+}
+
+export function createInitialGameState(): GameState {
+  return {
+    board: createEmptyBoard(),
+    currentPlayer: INITIAL_CURRENT_PLAYER,
+    humanPlayer: INITIAL_HUMAN_PLAYER,
+    computerPlayer: INITIAL_COMPUTER_PLAYER,
+    status: INITIAL_STATUS,
+  };
 }

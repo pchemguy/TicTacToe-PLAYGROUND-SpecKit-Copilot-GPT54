@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  createInitialGameState,
   createEmptyBoard,
   INITIAL_COMPUTER_PLAYER,
   INITIAL_CURRENT_PLAYER,
@@ -64,5 +65,25 @@ describe('core state helpers', () => {
     expect(INITIAL_HUMAN_PLAYER).toEqual({ role: 'human', mark: 'X' });
     expect(INITIAL_COMPUTER_PLAYER).toEqual({ role: 'computer', mark: 'O' });
     expect(INITIAL_STATUS).toEqual({ kind: 'ongoing' });
+  });
+
+  it('creates the deterministic initial game state for a new match', () => {
+    expect(createInitialGameState()).toEqual({
+      board: [
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+        'empty',
+      ],
+      currentPlayer: 'human',
+      humanPlayer: { role: 'human', mark: 'X' },
+      computerPlayer: { role: 'computer', mark: 'O' },
+      status: { kind: 'ongoing' },
+    });
   });
 });
