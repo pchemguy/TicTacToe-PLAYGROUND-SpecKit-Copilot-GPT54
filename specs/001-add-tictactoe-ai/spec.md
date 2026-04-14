@@ -148,8 +148,7 @@ The human player or calling system can inspect the current game state at any tim
 
 ### Key Entities *(include if feature involves data)*
 
-- **GameState**: Represents the full game at a point in time, including the 3x3 grid, the assigned player roles, the current player, and the current game status.
-- **GameState**: Represents the full game at a point in time, including the board as a flat 9-element array ordered by row-major index, the assigned player roles, the current player, and the current game status, with `currentPlayer` set to `none` after a win or draw.
+- **GameState**: Represents the full game at a point in time, including the board as a flat 9-element array ordered by row-major index, the assigned player roles, the current player, and the current game status, with currentPlayer set to none after a win or draw.
 - **Player**: Represents one participant in the match, either the human or the computer, along with the mark assigned to that participant.
 - **Move/Input**: Represents a human attempt to select a specific cell index from 0 through 8 for the next mark placement.
 - **ComputerMove**: Represents the system-generated move selected for the computer player during its turn.
