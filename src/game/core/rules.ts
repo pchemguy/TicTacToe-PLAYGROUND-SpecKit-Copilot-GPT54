@@ -1,12 +1,15 @@
-import { replaceBoardCell } from './state';
+import { replaceBoardCell, resolveGameState } from './state';
 import {
   ALL_CELL_INDEXES,
   BOARD_CELL_COUNT,
   ONGOING_STATUS,
+  WINNING_LINES,
+  type Board,
+  type BoardCell,
   type CellIndex,
   type CurrentPlayer,
-  type GameState,
   type GameStatus,
+  type GameState,
   type MoveValidationResult,
   type PlayerRole,
 } from './types';
@@ -19,7 +22,38 @@ function getNextPlayer(player: PlayerRole): CurrentPlayer {
   return player === 'human' ? 'computer' : 'human';
 }
 
-export function evaluateGameStatus(_state: GameState): GameStatus {
+function getWinnerFromMark(mark: BoardCell): PlayerRole | null {
+  if (mark === 'X') {
+    return 'human';
+  }
+
+  if (mark === 'O') {
+    return 'computer';
+  }
+
+  return null;
+}
+
+export function evaluateGameStatus(board: Board): GameStatus {
+  for (const [firstIndex, secondIndex, thirdIndex] of WINNING_LINES) {
+    const firstCell = board[firstIndex];
+
+    if (firstCell === 'empty') {
+      continue;
+    }
+
+    if (firstCell === board[secondIndex] && firstCell === board[thirdIndex]) {
+      return {
+        kind: 'won',
+        winner: getWinnerFromMark(firstCell) ?? 'human',
+      };
+    }
+  }
+
+  if (board.every((cell) => cell !== 'empty')) {
+    return { kind: 'draw' };
+  }
+
   return ONGOING_STATUS;
 }
 
@@ -80,11 +114,7 @@ export function applyMove(
 
   const playerMark = player === 'human' ? state.humanPlayer.mark : state.computerPlayer.mark;
   const nextBoard = replaceBoardCell(state.board, cellIndex as CellIndex, playerMark);
+  const nextStatus = evaluateGameStatus(nextBoard);
 
-  return {
-    ...state,
-    board: nextBoard,
-    currentPlayer: getNextPlayer(player),
-    status: evaluateGameStatus(state),
-  };
+  return resolveGameState(state, nextBoard, nextStatus, getNextPlayer(player));
 }

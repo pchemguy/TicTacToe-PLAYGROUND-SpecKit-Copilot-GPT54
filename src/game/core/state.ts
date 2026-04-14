@@ -54,3 +54,17 @@ export function createInitialGameState(): GameState {
     status: INITIAL_STATUS,
   };
 }
+
+export function resolveGameState(
+  state: GameState,
+  board: Board,
+  status: GameStatus,
+  nextCurrentPlayer: CurrentPlayer,
+): GameState {
+  return {
+    ...state,
+    board,
+    currentPlayer: status.kind === 'ongoing' ? nextCurrentPlayer : 'none',
+    status,
+  };
+}
