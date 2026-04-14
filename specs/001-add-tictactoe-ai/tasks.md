@@ -64,7 +64,7 @@
 **Independent Test**: Run the terminal-state unit and orchestration coverage and verify all win lines, draw states, final-cell win precedence, `currentPlayer = none`, no computer move after a terminal human move, and blocked post-game input behavior.
 
 - [x] T011 [US4] Add terminal-state unit coverage for row, column, diagonal, draw, final-cell win precedence, and terminal-state invariants in tests/unit/core/rules.test.ts and implement terminal evaluation semantics in src/game/core/rules.ts and src/game/core/state.ts
-- [ ] T012 [US4] Add terminal-state orchestration coverage in tests/integration/app-flow.test.ts and implement no-AI-on-terminal-human-move handling plus post-game input blocking in src/app/hooks/useTicTacToeGame.ts
+- [x] T012 [US4] Add terminal-state orchestration coverage in tests/integration/app-flow.test.ts and implement no-AI-on-terminal-human-move handling plus post-game input blocking in src/app/hooks/useTicTacToeGame.ts
 
 **Checkpoint**: The deterministic core rules stage is complete and safe for AI and playable UI work.
 
