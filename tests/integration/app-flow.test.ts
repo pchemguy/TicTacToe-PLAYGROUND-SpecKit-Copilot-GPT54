@@ -3,6 +3,13 @@ import { describe, expect, it } from 'vitest';
 
 import { useTicTacToeGame } from '../../src/app/hooks/useTicTacToeGame';
 import { createInitialGameState } from '../../src/game/core/state';
+import type { GameState } from '../../src/game/core/types';
+
+const TERMINAL_HUMAN_WIN_SETUP: GameState = {
+  ...createInitialGameState(),
+  board: ['X', 'X', 'empty', 'O', 'O', 'empty', 'empty', 'empty', 'empty'],
+  currentPlayer: 'human',
+};
 
 describe('useTicTacToeGame', () => {
   it('exposes the deterministic initial game state on mount', () => {
@@ -38,5 +45,28 @@ describe('useTicTacToeGame', () => {
     });
 
     expect(result.current.gameState).toBe(stateAfterValidMove);
+  });
+
+  it('returns the terminal state without any extra turn processing after a winning human move', () => {
+    const { result } = renderHook(() => useTicTacToeGame(TERMINAL_HUMAN_WIN_SETUP));
+
+    act(() => {
+      result.current.playHumanMove(2);
+    });
+
+    expect(result.current.gameState).toEqual({
+      ...TERMINAL_HUMAN_WIN_SETUP,
+      board: ['X', 'X', 'X', 'O', 'O', 'empty', 'empty', 'empty', 'empty'],
+      currentPlayer: 'none',
+      status: { kind: 'won', winner: 'human' },
+    });
+
+    const terminalState = result.current.gameState;
+
+    act(() => {
+      result.current.playHumanMove(5);
+    });
+
+    expect(result.current.gameState).toBe(terminalState);
   });
 });

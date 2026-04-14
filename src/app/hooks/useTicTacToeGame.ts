@@ -10,8 +10,8 @@ export interface TicTacToeGameController {
   restartGame: () => void;
 }
 
-export function useTicTacToeGame(): TicTacToeGameController {
-  const [gameState, setGameState] = useState(createInitialGameState);
+export function useTicTacToeGame(initialGameState?: GameState): TicTacToeGameController {
+  const [gameState, setGameState] = useState(() => initialGameState ?? createInitialGameState());
 
   return {
     gameState,
