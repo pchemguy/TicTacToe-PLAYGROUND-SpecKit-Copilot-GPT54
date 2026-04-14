@@ -38,7 +38,7 @@
 **Independent Test**: Run the unit and integration coverage for initialization and verify the system exposes an empty 9-cell board, human `X`, computer `O`, human turn, and ongoing status without making any moves.
 
 - [x] T007 [US1] Add initialization unit coverage in tests/unit/core/state.test.ts and implement the new-game state factory in src/game/core/state.ts
-- [ ] T008 [US1] Add initialization orchestration coverage in tests/integration/app-flow.test.ts and implement initial exposed state in src/app/hooks/useTicTacToeGame.ts
+- [x] T008 [US1] Add initialization orchestration coverage in tests/integration/app-flow.test.ts and implement initial exposed state in src/app/hooks/useTicTacToeGame.ts
 
 **Checkpoint**: User Story 1 is independently functional through pure state creation and orchestration exposure.
 
