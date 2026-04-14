@@ -13,7 +13,7 @@
 
 - [x] T001 Create the browser app toolchain configuration in package.json, tsconfig.json, vite.config.ts, and index.html
 - [x] T002 [P] Configure browser test bootstrap in tests/setup.ts and package.json
-- [ ] T003 [P] Create the application entry shell in src/app/main.tsx, src/app/App.tsx, and src/ui/styles/app.css
+- [x] T003 [P] Create the application entry shell in src/app/main.tsx, src/app/App.tsx, and src/ui/styles/app.css
 
 ---
 
