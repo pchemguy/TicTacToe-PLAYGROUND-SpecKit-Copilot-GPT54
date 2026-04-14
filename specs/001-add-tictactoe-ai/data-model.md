@@ -76,10 +76,11 @@ The current stage models a single local match with no persistence. The board is 
 - **Purpose**: Represents the move chosen by the strategy layer.
 - **Fields**:
   - `cellIndex`: integer `0` through `8`
-  - `reason`: optional classification such as `win`, `block`, `best-available`, or `forced`
+  - `reason`: optional diagnostic-only classification such as `win`, `block`, `best-available`, or `forced`; this metadata is not part of the exposed contract and may be omitted or changed without affecting behavior
 - **Validation rules**:
   - The selected cell must be legal in the current board state.
   - If multiple moves have the same optimal score, the chosen index must be the lowest row-major index.
+  - If present, `reason` is informational only and must not be used to determine move legality, game outcomes, or UI behavior.
 
 ## Relationships
 
