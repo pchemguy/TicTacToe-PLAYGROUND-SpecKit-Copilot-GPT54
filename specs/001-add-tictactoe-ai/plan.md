@@ -15,7 +15,7 @@ Build the current stage of the feature as a browser-based React and TypeScript w
 **Testing**: Vitest for pure core and orchestration tests, React Testing Library for UI behavior tests  
 **Target Platform**: Current stage targets evergreen desktop browsers in a local web app flow; future desktop packaging via Electron is deferred  
 **Project Type**: Browser-based web application for the current stage within a browser-oriented desktop-app roadmap  
-**Performance Goals**: Human move validation and computer response should complete within a single user interaction cycle, with AI move selection targeting <50 ms on a typical developer machine  
+**Performance Goals**: No formal benchmarked latency target is defined for this stage. The previous `<50 ms on a typical developer machine` value was removed as a formal requirement because this phase does not establish a repeatable measurement harness or enforcement threshold across browser environments. Developers should still treat local play as needing to feel effectively instantaneous, with move application and AI response remaining roughly in line with the earlier sub-50 ms expectation on a typical developer machine.  
 **Constraints**: Offline-capable, deterministic core behavior, no networking, no persistence, no Electron packaging in this stage, pure game engine and AI logic testable without React  
 **Scale/Scope**: Single local player session, one 3x3 board, small finite state space, no multi-user concerns
 

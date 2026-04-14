@@ -34,6 +34,6 @@ Define the pure deterministic rules and state-transition boundary for the Tic Ta
 
 ## Invariants
 
-- Board length is always 9.
+- Board is always represented as a flat array of length 9, indexed 0 through 8 in row-major order.
 - Human player is always `X`; computer player is always `O` for this feature.
 - The module does not trigger automatic computer moves; orchestration owns multi-step turn resolution.

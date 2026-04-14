@@ -185,5 +185,6 @@ The human player or calling system can inspect the current game state at any tim
 - Human-versus-human multiplayer.
 - Adjustable difficulty levels or intentionally suboptimal computer behavior.
 - Alternative board sizes or alternate win-length rules.
+- Formal latency or performance service-level requirements for the current stage.
 - User interface design, rendering, animation, or presentation behavior.
 - Persistence, analytics, networking, or online play.
