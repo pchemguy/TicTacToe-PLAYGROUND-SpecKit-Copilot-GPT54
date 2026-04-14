@@ -25,7 +25,7 @@
 
 - [x] T004 Create shared game domain types and constants in src/game/core/types.ts
 - [x] T005 Create shared immutable state helpers and exported initial-state primitives in src/game/core/state.ts
-- [ ] T006 Create the empty orchestration hook and UI component shells in src/app/hooks/useTicTacToeGame.ts, src/ui/components/GameBoard.tsx, src/ui/components/GameCell.tsx, src/ui/components/GameStatusPanel.tsx, and src/ui/components/RestartButton.tsx
+- [x] T006 Create the empty orchestration hook and UI component shells in src/app/hooks/useTicTacToeGame.ts, src/ui/components/GameBoard.tsx, src/ui/components/GameCell.tsx, src/ui/components/GameStatusPanel.tsx, and src/ui/components/RestartButton.tsx
 
 **Checkpoint**: Browser app scaffold and architecture seams are in place for story-by-story implementation.
 
