@@ -1,6 +1,11 @@
 ---
 url: https://chatgpt.com/g/g-p-69de610325f08191aaf60c2de8f32282-tic-tac-toe-spec-kit-copilot/c/69de6109-3f34-838e-98fa-86c7f2d44c76
 ---
+
+## Short
+
+Plan this feature as a browser-based web app for the current stage, using React and TypeScript only. Do not include Electron packaging or SQLite persistence in this stage; treat both as explicitly deferred and out of current implementation scope. The feature is a classic Tic Tac Toe game where a human plays against the computer only, and the computer must use an optimal, unbeatable strategy that never loses under any sequence of valid human moves. The plan must make the architecture and decomposition explicit, with clear separation between deterministic game rules/state logic, computer move-selection logic, application state orchestration, and UI/rendering. Treat the game engine and computer strategy as pure core logic that is independently testable outside the UI shell. Include a constitution check covering small testable increments, inseparable code-and-test development, explicit decisions/assumptions, and early MVP delivery. The preferred staged path is: first deterministic core rules and state transitions, then unbeatable computer strategy with rigorous validation, then a minimal playable web UI, then restart flow and exposed game status, with packaging and persistence deferred to later work. In Phase 0 research, resolve and document the chosen optimal strategy, the validation approach for proving non-loss, and the boundary between pure core logic and web UI integration. In Phase 1 design, produce feature-specific design artifacts for game state, board/cell representation, player/computer roles, game status, and internal module contracts appropriate for a local web app.
+
 ## Long
 
 Use the approved repository platform and produce the implementation plan accordingly.
@@ -68,7 +73,3 @@ Phase 1 design artifacts should reflect the feature rather than generic placehol
 In the source structure, prefer a frontend-oriented desktop layout consistent with the approved platform rather than a backend/frontend split. Keep Electron runtime code separate from React UI code and separate both from core game logic.
 
 Do not plan speculative infrastructure. Keep the design minimal, local, deterministic, and sufficient for the approved feature only.
-
-## Short
-
-Plan this feature as a browser-based web app for the current stage, using React and TypeScript only. Do not include Electron packaging or SQLite persistence in this stage; treat both as explicitly deferred and out of current implementation scope. The feature is a classic Tic Tac Toe game where a human plays against the computer only, and the computer must use an optimal, unbeatable strategy that never loses under any sequence of valid human moves. The plan must make the architecture and decomposition explicit, with clear separation between deterministic game rules/state logic, computer move-selection logic, application state orchestration, and UI/rendering. Treat the game engine and computer strategy as pure core logic that is independently testable outside the UI shell. Include a constitution check covering small testable increments, inseparable code-and-test development, explicit decisions/assumptions, and early MVP delivery. The preferred staged path is: first deterministic core rules and state transitions, then unbeatable computer strategy with rigorous validation, then a minimal playable web UI, then restart flow and exposed game status, with packaging and persistence deferred to later work. In Phase 0 research, resolve and document the chosen optimal strategy, the validation approach for proving non-loss, and the boundary between pure core logic and web UI integration. In Phase 1 design, produce feature-specific design artifacts for game state, board/cell representation, player/computer roles, game status, and internal module contracts appropriate for a local web app.
