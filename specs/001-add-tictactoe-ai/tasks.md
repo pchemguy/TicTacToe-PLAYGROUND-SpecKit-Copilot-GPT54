@@ -118,7 +118,7 @@
 - [x] T021 Update browser-only usage, setup, and test commands in README.md and specs/001-add-tictactoe-ai/quickstart.md
 - [x] T022 Create implementation-focused developer workflow notes in DEVELOPMENT.md
 - [x] T023 [P] Document the implemented architecture and separation of concerns in docs/architecture.md
-- [ ] T024 [P] Document the implemented game rules, state transitions, and edge cases in docs/game-rules.md
+- [x] T024 [P] Document the implemented game rules, state transitions, and edge cases in docs/game-rules.md
 - [ ] T025 [P] Document the implemented strategy testing and optimality validation approach in docs/testing.md
 - [ ] T026 Review README.md, DEVELOPMENT.md, specs/001-add-tictactoe-ai/quickstart.md, and docs/ content against the implemented code and test workflow to remove speculation and correct mismatches
 
