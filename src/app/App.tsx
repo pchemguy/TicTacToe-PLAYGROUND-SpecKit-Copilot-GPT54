@@ -1,17 +1,15 @@
+import type { GameState } from '../game/core/types';
 import { GameBoard } from '../ui/components/GameBoard';
 import { GameStatusPanel } from '../ui/components/GameStatusPanel';
 import { RestartButton } from '../ui/components/RestartButton';
 import { useTicTacToeGame } from './hooks/useTicTacToeGame';
 
-export function App() {
-  const { gameState, playHumanMove, restartGame } = useTicTacToeGame();
+interface AppProps {
+  initialGameState?: GameState;
+}
 
-  const statusTitle =
-    gameState.status.kind === 'ongoing' ? 'Your move' : 'Round complete';
-  const statusDetail =
-    gameState.status.kind === 'ongoing'
-      ? 'Click an empty cell to place X. The computer will respond automatically as O.'
-      : 'No further moves are available in the current round.';
+export function App({ initialGameState }: AppProps = {}) {
+  const { gameState, playHumanMove, restartGame } = useTicTacToeGame(initialGameState);
 
   return (
     <main className="app-shell">
@@ -33,7 +31,7 @@ export function App() {
           <RestartButton onRestart={restartGame} />
         </div>
 
-        <GameStatusPanel title={statusTitle} detail={statusDetail} />
+        <GameStatusPanel currentPlayer={gameState.currentPlayer} status={gameState.status} />
 
         <GameBoard
           cells={gameState.board}
