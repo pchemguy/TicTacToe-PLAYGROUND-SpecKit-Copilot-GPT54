@@ -68,6 +68,9 @@ gh milestone create -t "Phase 9 - Documentation & Developer Experience" -d "Impl
 gh extension install valeriobelli/gh-milestone
 
 
+gh issue create -t "ABC ABC" -l qaz -l mns -m m1 -F <file or std>
+
+
 `https://github.com/<owner>/<repo>/issues/<GH_issue_ID>`
 
 ## Purpose
