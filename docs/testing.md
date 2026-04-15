@@ -16,7 +16,7 @@ npm run build
 
 ## Test Layout
 
-- `tests/unit/core/state.test.ts`: initial-state creation, immutable board helpers, and reset-oriented state primitives
+- `tests/unit/core/state.test.ts`: initial-state creation, exported starting-state primitives, and immutable board helpers
 - `tests/unit/core/rules.test.ts`: valid moves, rejected moves, all win lines, draw detection, final-cell win precedence, and terminal lockout
 - `tests/unit/ai/select-computer-move.test.ts`: immediate wins, forced blocks, and deterministic lowest-index tie-breaking
 - `tests/unit/ai/minimax-validation.test.ts`: representative terminal scores plus exhaustive non-loss validation
