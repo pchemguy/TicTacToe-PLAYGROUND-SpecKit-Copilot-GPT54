@@ -11,11 +11,31 @@ const TERMINAL_HUMAN_WIN_SETUP: GameState = {
   currentPlayer: 'human',
 };
 
+const DRAW_SETUP: GameState = {
+  ...createInitialGameState(),
+  board: ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'empty'],
+  currentPlayer: 'human',
+};
+
+function expectStableGameStateShape(state: GameState): void {
+  expect(state.board).toHaveLength(9);
+  expect(state.humanPlayer).toEqual({ role: 'human', mark: 'X' });
+  expect(state.computerPlayer).toEqual({ role: 'computer', mark: 'O' });
+  expect(Object.keys(state).sort()).toEqual([
+    'board',
+    'computerPlayer',
+    'currentPlayer',
+    'humanPlayer',
+    'status',
+  ]);
+}
+
 describe('useTicTacToeGame', () => {
   it('exposes the deterministic initial game state on mount', () => {
     const { result } = renderHook(() => useTicTacToeGame());
 
     expect(result.current.gameState).toEqual(createInitialGameState());
+    expectStableGameStateShape(result.current.gameState);
     expect(typeof result.current.playHumanMove).toBe('function');
     expect(typeof result.current.restartGame).toBe('function');
   });
@@ -32,6 +52,7 @@ describe('useTicTacToeGame', () => {
       board: ['X', 'empty', 'empty', 'empty', 'O', 'empty', 'empty', 'empty', 'empty'],
       currentPlayer: 'human',
     });
+    expectStableGameStateShape(result.current.gameState);
   });
 
   it('keeps exposed state unchanged after rejected human moves', () => {
@@ -60,6 +81,7 @@ describe('useTicTacToeGame', () => {
     });
 
     expect(result.current.gameState).toBe(stateAfterValidMove);
+    expectStableGameStateShape(result.current.gameState);
   });
 
   it('returns the terminal state without any extra turn processing after a winning human move', () => {
@@ -83,5 +105,22 @@ describe('useTicTacToeGame', () => {
     });
 
     expect(result.current.gameState).toBe(terminalState);
+    expectStableGameStateShape(result.current.gameState);
+  });
+
+  it('keeps the exposed state shape stable for draw outcomes', () => {
+    const { result } = renderHook(() => useTicTacToeGame(DRAW_SETUP));
+
+    act(() => {
+      result.current.playHumanMove(8);
+    });
+
+    expect(result.current.gameState).toEqual({
+      ...DRAW_SETUP,
+      board: ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'],
+      currentPlayer: 'none',
+      status: { kind: 'draw' },
+    });
+    expectStableGameStateShape(result.current.gameState);
   });
 });
