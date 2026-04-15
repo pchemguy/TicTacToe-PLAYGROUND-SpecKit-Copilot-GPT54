@@ -17,15 +17,17 @@ export function App({ initialGameState }: AppProps = {}) {
         <p className="app-kicker">Browser Stage</p>
         <h1>Classic Tic Tac Toe Against Computer</h1>
         <p className="app-summary">
-          Play against the unbeatable computer opponent. The computer uses the minimax
-          algorithm to guarantee it never loses.
+          Play against an unbeatable computer opponent. The game features a deterministic
+          game core, minimax-based optimal strategy, and a clean orchestration hook connecting
+          rules, AI, and UI.
         </p>
       </section>
 
       <section className="app-panel" aria-labelledby="game-shell-title">
         <div className="app-panel-header">
           <div>
-            <h2 id="game-shell-title">Game</h2>
+            <p className="app-section-label">Game</p>
+            <h2 id="game-shell-title">Your turn is X &mdash; can you beat the computer?</h2>
           </div>
           <RestartButton onRestart={restartGame} />
         </div>
