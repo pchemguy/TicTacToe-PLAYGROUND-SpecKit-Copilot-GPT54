@@ -14,7 +14,7 @@ export function selectComputerMove(state: GameState): number {
 
   for (const cellIndex of legalMoves) {
     const nextState = applyMove(state, 'computer', cellIndex);
-    const score = scorePosition(nextState, 'human');
+    const score = scorePosition(nextState);
 
     if (score > bestScore) {
       bestScore = score;

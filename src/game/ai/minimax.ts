@@ -1,5 +1,5 @@
 import { applyMove, getLegalMoves } from '../core/rules';
-import type { GameState, PlayerRole } from '../core/types';
+import type { GameState } from '../core/types';
 
 function scoreTerminalState(state: GameState): number {
   if (state.status.kind === 'won') {
@@ -9,27 +9,19 @@ function scoreTerminalState(state: GameState): number {
   return 0;
 }
 
-export function scorePosition(state: GameState, activePlayer: PlayerRole): number {
+export function scorePosition(state: GameState): number {
   if (state.status.kind !== 'ongoing') {
     return scoreTerminalState(state);
   }
 
-  if (state.currentPlayer !== activePlayer) {
-    throw new Error('The active player does not match the provided game state.');
-  }
-
   const legalMoves = getLegalMoves(state);
 
-  if (legalMoves.length === 0) {
-    return 0;
-  }
-
-  if (activePlayer === 'computer') {
+  if (state.currentPlayer === 'computer') {
     let bestScore = Number.NEGATIVE_INFINITY;
 
     for (const cellIndex of legalMoves) {
       const nextState = applyMove(state, 'computer', cellIndex);
-      bestScore = Math.max(bestScore, scorePosition(nextState, 'human'));
+      bestScore = Math.max(bestScore, scorePosition(nextState));
     }
 
     return bestScore;
@@ -39,7 +31,7 @@ export function scorePosition(state: GameState, activePlayer: PlayerRole): numbe
 
   for (const cellIndex of legalMoves) {
     const nextState = applyMove(state, 'human', cellIndex);
-    bestScore = Math.min(bestScore, scorePosition(nextState, 'computer'));
+    bestScore = Math.min(bestScore, scorePosition(nextState));
   }
 
   return bestScore;
