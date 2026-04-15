@@ -43,10 +43,13 @@ export function evaluateGameStatus(board: Board): GameStatus {
     }
 
     if (firstCell === board[secondIndex] && firstCell === board[thirdIndex]) {
-      return {
-        kind: 'won',
-        winner: getWinnerFromMark(firstCell) ?? 'human',
-      };
+      const winner = getWinnerFromMark(firstCell);
+
+      if (winner === null) {
+        throw new Error(`Unexpected board cell value: ${firstCell}`);
+      }
+
+      return { kind: 'won', winner };
     }
   }
 
@@ -67,7 +70,7 @@ export function validateMove(
   }
 
   if (state.currentPlayer !== player) {
-    return { isValid: false, reason: 'not-human-turn' };
+    return { isValid: false, reason: 'not-player-turn' };
   }
 
   if (!Number.isInteger(cellIndex)) {

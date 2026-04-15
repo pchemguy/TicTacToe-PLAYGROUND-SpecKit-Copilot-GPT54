@@ -40,9 +40,9 @@ describe('minimax validation', () => {
   it('scores representative terminal states correctly', () => {
     const terminalBase = createInitialGameState();
 
-    expect(scorePosition({ ...terminalBase, currentPlayer: 'none', status: { kind: 'won', winner: 'computer' } }, 'computer')).toBe(1);
-    expect(scorePosition({ ...terminalBase, currentPlayer: 'none', status: { kind: 'won', winner: 'human' } }, 'human')).toBe(-1);
-    expect(scorePosition({ ...terminalBase, currentPlayer: 'none', status: { kind: 'draw' } }, 'computer')).toBe(0);
+    expect(scorePosition({ ...terminalBase, currentPlayer: 'none', status: { kind: 'won', winner: 'computer' } })).toBe(1);
+    expect(scorePosition({ ...terminalBase, currentPlayer: 'none', status: { kind: 'won', winner: 'human' } })).toBe(-1);
+    expect(scorePosition({ ...terminalBase, currentPlayer: 'none', status: { kind: 'draw' } })).toBe(0);
   });
 
   it('never allows the computer to lose from a new game under valid human play', () => {

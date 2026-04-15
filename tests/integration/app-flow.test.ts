@@ -66,8 +66,8 @@ describe('useTicTacToeGame', () => {
     const stateAfterValidMove = result.current.gameState;
     expect(stateAfterValidMove).not.toBe(initialState);
     expect(stateAfterValidMove.board[0]).toBe('X');
-  expect(stateAfterValidMove.board[4]).toBe('O');
-  expect(stateAfterValidMove.currentPlayer).toBe('human');
+    expect(stateAfterValidMove.board[4]).toBe('O');
+    expect(stateAfterValidMove.currentPlayer).toBe('human');
 
     act(() => {
       result.current.playHumanMove(0);
