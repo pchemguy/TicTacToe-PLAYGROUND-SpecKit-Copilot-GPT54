@@ -6,7 +6,7 @@ export type PlayerRole = 'human' | 'computer';
 export type CurrentPlayer = PlayerRole | 'none';
 export type MoveRejectionReason =
   | 'game-complete'
-  | 'not-human-turn'
+  | 'not-player-turn'
   | 'occupied-cell'
   | 'out-of-range'
   | 'non-integer';

@@ -40,7 +40,11 @@ export function replaceBoardCell(
   cellIndex: CellIndex,
   nextValue: BoardCell,
 ): Board {
-  const nextBoard = [...cloneBoard(board)];
+  if (board.length !== BOARD_CELL_COUNT) {
+    throw new Error(`Expected a board with ${BOARD_CELL_COUNT} cells.`);
+  }
+
+  const nextBoard = [...board] as BoardCell[];
   nextBoard[cellIndex] = nextValue;
   return nextBoard;
 }
