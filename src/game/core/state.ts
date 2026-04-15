@@ -55,6 +55,10 @@ export function createInitialGameState(): GameState {
   };
 }
 
+export function resetGameState(): GameState {
+  return createInitialGameState();
+}
+
 export function resolveGameState(
   state: GameState,
   board: Board,

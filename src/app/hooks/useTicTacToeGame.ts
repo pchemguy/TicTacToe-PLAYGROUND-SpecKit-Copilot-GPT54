@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { selectComputerMove } from '../../game/ai/selectComputerMove';
 import { applyMove } from '../../game/core/rules';
-import { createInitialGameState } from '../../game/core/state';
+import { createInitialGameState, resetGameState } from '../../game/core/state';
 import type { GameState } from '../../game/core/types';
 
 export interface TicTacToeGameController {
@@ -28,6 +28,8 @@ export function useTicTacToeGame(initialGameState?: GameState): TicTacToeGameCon
         return applyMove(stateAfterHumanMove, 'computer', computerMove);
       });
     },
-    restartGame: () => {},
+    restartGame: () => {
+      setGameState(resetGameState());
+    },
   };
 }
