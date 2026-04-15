@@ -91,7 +91,7 @@
 
 **Independent Test**: Run the restart integration and UI coverage and verify restart clears the board, restores player defaults, resets status, and removes all prior terminal details.
 
-- [ ] T017 [US5] Add restart integration coverage in tests/integration/restart-flow.test.ts and implement restart state reset in src/app/hooks/useTicTacToeGame.ts and src/game/core/state.ts
+- [x] T017 [US5] Add restart integration coverage in tests/integration/restart-flow.test.ts and implement restart state reset in src/app/hooks/useTicTacToeGame.ts and src/game/core/state.ts
 - [ ] T018 [US5] Add restart browser coverage in tests/ui/playable-game.test.tsx and implement the restart control in src/ui/components/RestartButton.tsx and src/app/App.tsx
 
 **Checkpoint**: User Story 5 is independently testable through restart behavior in the browser app.
