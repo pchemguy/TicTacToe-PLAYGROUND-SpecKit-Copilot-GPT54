@@ -30,7 +30,7 @@ export function App() {
             <p className="app-section-label">Application Shell</p>
             <h2 id="game-shell-title">UI and orchestration boundaries are in place</h2>
           </div>
-          <RestartButton disabled onRestart={restartGame} />
+          <RestartButton onRestart={restartGame} />
         </div>
 
         <GameStatusPanel title={statusTitle} detail={statusDetail} />

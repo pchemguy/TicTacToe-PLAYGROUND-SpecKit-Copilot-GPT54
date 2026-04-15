@@ -15,4 +15,18 @@ describe('playable game UI', () => {
     expect(firstCell).toHaveTextContent('X');
     expect(centerCell).toHaveTextContent('O');
   });
+
+  it('resets the rendered board when the restart control is used', () => {
+    render(<App />);
+
+    const firstCell = screen.getByLabelText('Cell 0');
+    const centerCell = screen.getByLabelText('Cell 4');
+    const restartButton = screen.getByRole('button', { name: 'Restart Match' });
+
+    fireEvent.click(firstCell);
+    fireEvent.click(restartButton);
+
+    expect(firstCell).not.toHaveTextContent('X');
+    expect(centerCell).not.toHaveTextContent('O');
+  });
 });
