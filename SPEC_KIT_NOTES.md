@@ -20,7 +20,7 @@ This project has a well developed phased decomposition of the target feature dev
 ## Constitution
 
 - Consider introducing constitution examples into Spec Kit project and using [constitution](.specify/memory/constitution.md) as an example (*Obsidian.md will not open this link in a dotted directory*).
-- Need to add documentation development section incorporating simultaneous docs development by task decomposition and implementation agents; possibly also to checklist or something to add QA control as well.
+- [x] Need to add documentation development section incorporating simultaneous docs development by task decomposition and implementation agents; possibly also to checklist or something to add QA control as well.
 
 ## Task to Issue Mapping
 

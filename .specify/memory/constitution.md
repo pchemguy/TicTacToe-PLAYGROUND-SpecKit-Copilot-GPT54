@@ -3,6 +3,7 @@ Sync Impact Report
 Version change: 1.4.0 -> 1.5.0
 Modified principles:
 - Validation Evidence Is Mandatory -> III. Test Suite Development Is Inseparable From Code Development
+- Documentation development -> ### VII. Documentation Is A First-Class, Verified Deliverable
 Templates requiring updates:
 - ⚠ pending: .specify/templates/plan-template.md
 - ⚠ pending: .specify/templates/spec-template.md
@@ -91,6 +92,31 @@ System design and implementation MUST preserve clear separation of concerns at e
 Plans and implementation tasks MUST identify the intended decomposition for non-trivial changes and MUST avoid designs that mix unrelated responsibilities, hide boundaries, or force broad changes for localized behavior. Where a design introduces shared infrastructure, common abstractions, or reusable layers, that structure MUST be justified by immediate maintainability, testability, extensibility, or boundary-enforcement needs rather than speculative reuse or anticipated generality.
 
 Rationale: strong separation of concerns reduces regression risk, improves local reasoning, enables more reliable testing, and allows the system to evolve in controlled increments.
+
+### VII. Documentation Is A First-Class, Verified Deliverable
+
+Project documentation MUST be treated as a required, versioned, and validated deliverable of every feature, not as optional or post-hoc work.
+
+Accordingly:
+
+- plans MUST define required documentation artifacts, including:
+    - user-facing documentation (e.g., README, usage instructions)
+    - developer-facing documentation (e.g., DEVELOPMENT.md, architecture, extension points, development workflow)
+    - supporting documentation (e.g., domain behavior, constraints, testing strategy)
+- task lists MUST include explicit documentation tasks that:
+    - create or update all required documentation artifacts;
+    - reflect the actual implemented system structure, behavior, and constraints; and
+    - are sequenced after functional implementation but before final completion
+- implementation MUST ensure that documentation:
+    - is updated in the same feature scope as the code it describes;
+    - does not contain speculative, outdated, or inferred behavior; and
+    - is reviewed against the implemented code and test workflow and corrected for mismatches
+- a feature MUST NOT be considered complete until:
+    - all required documentation artifacts are present;
+    - documentation is consistent with the implemented system; and
+    - instructions for running, using, and extending the system are explicitly defined
+
+Rationale: without enforced documentation, spec-driven development degrades into code-driven reconstruction. Verified documentation preserves system understanding, enables agent continuity, and prevents knowledge loss.
 
 ## Technology Platform
 
@@ -193,4 +219,4 @@ Constitutional principles take precedence over feature-level preferences. The or
 4. Approved task or issue definition
 5. Local coding preference
 
-**Version**: 1.5.0 | **Ratified**: 2026-04-10 | **Last Amended**: 2026-04-13
+**Version**: 1.5.0 | **Ratified**: 2026-04-10 | **Last Amended**: 2026-04-15
