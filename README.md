@@ -1,3 +1,7 @@
+> [!NOTE] Spec Kit Highlights
+> 
+> See [SPEC_KIT_NOTES](SPEC_KIT_NOTES.md) for important Spec Kit highlights.
+
 # Classic Tic Tac Toe Against Computer
 
 This repository contains the current browser-only implementation stage of a React and TypeScript Tic Tac Toe game. A human player always uses `X`, the computer always uses `O`, and the computer responds with deterministic minimax-based play that does not lose under valid human play.
