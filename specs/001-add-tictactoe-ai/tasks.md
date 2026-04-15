@@ -104,7 +104,7 @@
 
 **Independent Test**: Run the state-exposure integration and UI coverage and verify the exposed state shape remains stable after initialization, rejected moves, automatic computer turns, wins, and draws.
 
-- [ ] T019 [US6] Add state-exposure integration coverage in tests/integration/app-flow.test.ts and implement stable current-state exposure in src/app/hooks/useTicTacToeGame.ts
+- [x] T019 [US6] Add state-exposure integration coverage in tests/integration/app-flow.test.ts and implement stable current-state exposure in src/app/hooks/useTicTacToeGame.ts
 - [ ] T020 [US6] Add state-rendering browser coverage in tests/ui/playable-game.test.tsx and implement current-player and outcome presentation in src/ui/components/GameStatusPanel.tsx and src/app/App.tsx
 
 **Checkpoint**: User Story 6 completes the requested exposed-state behavior for the browser app.
