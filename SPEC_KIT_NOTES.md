@@ -11,10 +11,12 @@ This project has a well developed phased decomposition of the target feature dev
 - [research](research.md)
 - [tasks](specs/001-add-tictactoe-ai/tasks.md)
 - [task-to-issue](task-to-issue.md)
+- [data-model](data-model.md)
 
 ## Constitution
 
-Consider introducing constitution examples into Spec Kit project and using [constitution](.specify/memory/constitution.md) as an example (*Obsidian.md will not open this link in a dotted directory*).
+- Consider introducing constitution examples into Spec Kit project and using [constitution](.specify/memory/constitution.md) as an example (*Obsidian.md will not open this link in a dotted directory*).
+- Need to add documentation development section incorporating simultaneous docs development by task decomposition and implementation agents; possibly also to checklist or something to add QA control as well.
 
 ## Task to Issue Mapping
 
@@ -26,3 +28,20 @@ Consider introducing constitution examples into Spec Kit project and using [cons
 
 - Integrate [implement](implement.md) (with conditionals on available labels/milestones/mapping, which must be created by patched `speckit.taskstoissues`) into `speckit.implement`. Note: missing instructions to close completed milestones.
 
+## Feature Decomposition
+
+- Consider [spec](spec.md), [plan](specs/001-add-tictactoe-ai/plan.md), [specify](specify.md), [plan](docs/plan.md), and current Spec Kit `specify` and `plan` prompts with the goal to extend these prompts for improved decomposition workflows.
+
+## Analyze Auto Fix
+
+- Introduce `speckit.analyzetoautofix` to perform automatic resolution of issues identified by `speckit.analyze`.
+- Extend `speckit.analyze` to create issues report as a file.
+- See
+    - [analysis-report](analysis-report.md)
+    - [analysis-resolution-plan](analysis-resolution-plan.md)
+    - [analysis-resolution-report](analysis-resolution-report.md)
+    - [speckit.analyzetoautofix.agent.md](.github/agents/speckit.analyzetoautofix.agent.md) (*Obsidian.md will not open this link in a dotted directory*)
+
+## UI Spec
+
+Need a dedicated agent / means for developing UI specification / design or some strategy.

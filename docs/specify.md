@@ -1,3 +1,7 @@
+---
+url: https://chatgpt.com/g/g-p-69de610325f08191aaf60c2de8f32282-tic-tac-toe-spec-kit-copilot/c/69de6109-3f34-838e-98fa-86c7f2d44c76
+---
+
 Create a specification for a classic Tic Tac Toe game played against the computer.
 
 The system must implement a deterministic single-player game on a 3×3 grid, where a human player competes against the computer. Players alternate turns placing their marks (X and O) into empty cells. The objective is to align three marks horizontally, vertically, or diagonally.
