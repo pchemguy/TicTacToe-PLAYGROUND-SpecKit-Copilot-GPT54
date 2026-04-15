@@ -10,7 +10,8 @@
         ".specify/scripts/bash/": true,
         ".specify/scripts/powershell/": true,
         "git rev-parse": true,
-        "./.specify/extensions/git/scripts/bash/create-new-feature.sh": true
+        "./.specify/extensions/git/scripts/bash/create-new-feature.sh": true,
+        "git config": true
     }
 }
 
