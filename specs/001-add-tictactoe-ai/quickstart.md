@@ -1,46 +1,49 @@
 # Quickstart: Classic Tic Tac Toe Against Computer
 
-## Current Stage Goal
+## Goal
 
-Run and validate a browser-based React and TypeScript implementation of the Tic Tac Toe feature with a pure deterministic game core and unbeatable computer opponent. Electron packaging and SQLite persistence are intentionally out of scope for this stage.
+Run and validate the implemented browser-based React and TypeScript Tic Tac Toe app with a pure deterministic game core and an unbeatable computer opponent. Electron packaging, persistence, and networking remain out of scope for this stage.
 
 ## Prerequisites
 
 - Node.js 22 LTS or newer
 - npm 10 or newer
-- Bash available on Windows for repository scripts
+- Bash on Windows only if you need to run repository helper scripts under `.specify/`
 
-## Planned Local Workflow
+## Local Workflow
 
 1. Install dependencies.
 2. Start the browser development server.
-3. Run the automated test suite for core logic, strategy validation, orchestration, and UI behavior.
+3. Open the local Vite URL in a browser.
+4. Run the automated test suite and type-check validation.
 
-## Expected Commands After Implementation Scaffold Exists
+## Commands
 
 ```bash
 npm install
 npm run dev:web
 npm test
+npm run lint
+npm run build
 ```
 
-## MVP Exercise Path
+## Manual Exercise Path
 
 1. Start a new local game in the browser.
 2. Click an empty cell to place the human `X`.
-3. Observe the automatic computer `O` response in the fully resolved returned state.
-4. Continue play until the system reports either a computer win or a draw, with a human win occurring only if allowed by invalid implementation behavior.
+3. Observe the automatic computer `O` response immediately after the accepted move.
+4. Continue play until the system reports either a computer win or a draw.
 5. Verify that additional moves are blocked after the game ends.
 6. Restart the game and confirm the board returns to a clean initial state.
 
 ## Validation Checklist
 
-- Core unit tests verify move legality, win detection, draw detection, and terminal-state invariants.
-- Strategy tests verify immediate wins, immediate blocks, deterministic tie-breaking, and exhaustive non-loss validation.
-- Integration tests verify human move to automatic computer response flow and restart behavior.
-- UI tests verify board rendering, click interactions, disabled terminal states, and displayed game status.
+- `npm test` covers core rules, computer strategy, orchestration flow, restart behavior, and browser UI behavior.
+- `npm run lint` runs TypeScript no-emit validation for the project.
+- `npm run build` verifies the Vite production build succeeds.
+- The browser UI should show `Current player: human` at the start of a match and render either a winner or draw message at the end.
 
-## Deferred Work
+## Deferred Scope
 
 - No Electron runtime or packaging commands are part of this quickstart.
 - No SQLite setup or migration workflow exists in this stage.
