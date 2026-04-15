@@ -79,7 +79,7 @@
 - [x] T013 [US3] Add strategy unit coverage for immediate wins, immediate blocks, and lowest-index tie-breaking in tests/unit/ai/select-computer-move.test.ts and implement deterministic move selection in src/game/ai/selectComputerMove.ts
 - [x] T014 [US3] Add exhaustive non-loss validation in tests/unit/ai/minimax-validation.test.ts and implement minimax scoring in src/game/ai/minimax.ts
 - [x] T015 [US3] Add full-turn orchestration coverage in tests/integration/app-flow.test.ts and implement automatic computer-turn resolution in src/app/hooks/useTicTacToeGame.ts
-- [ ] T016 [US3] Add playable browser flow coverage in tests/ui/playable-game.test.tsx and implement the minimal clickable board UI in src/ui/components/GameBoard.tsx, src/ui/components/GameCell.tsx, and src/app/App.tsx
+- [x] T016 [US3] Add playable browser flow coverage in tests/ui/playable-game.test.tsx and implement the minimal clickable board UI in src/ui/components/GameBoard.tsx, src/ui/components/GameCell.tsx, and src/app/App.tsx
 
 **Checkpoint**: User Story 3 delivers the first fully playable browser MVP with an unbeatable computer opponent.
 
