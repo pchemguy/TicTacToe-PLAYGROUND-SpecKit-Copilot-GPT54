@@ -1,10 +1,74 @@
-# Task-to-Issue Mapping
+# Task to Issue Mapping
 
-Feature: `[FEATURE_ID-or-NAME]`  
+Feature: `[FEATURE_NAME]`  
 Repository: `[owner/repo]`  
 Remote: `[git remote URL]`
 
 ---
+
+## Milestones
+
+```
+For a sample set of user stories (from spec.md)
+
+ - User Story 1 - Start a New Match
+ - User Story 2 - Make a Valid Human Move
+ - User Story 3 - Receive an Optimal Computer Response
+ - User Story 4 - End the Game Correctly
+ - User Story 5 - Restart From a Clean State
+ - User Story 6 - Inspect Current Game State
+
+A milestone table may look like:
+
+| # | Name                                                        |
+| - | ----------------------------------------------------------- |
+| 1 | Phase 1 - Setup                                             |
+| 2 | Phase 2 - Foundational                                      |
+| 3 | Phase 3 - US1 New Match (MVP)                               |
+| 4 | Phase 4 - US2 Valid Human Move (MVP)                        |
+| 5 | Phase 5 - US4 Terminal Core (MVP)                           |
+| 6 | Phase 6 - US3 Optimal Response & Playable UI (MVP Playable) |
+| 7 | Phase 7 - US5 Restart Flow                                  |
+| 8 | Phase 8 - US6 State Exposure                                |
+| 9 | Phase 9 - Documentation & Developer Experience              |
+```
+
+---
+
+
+
+Create GitHub label via CLI:
+
+```text
+gh label create <name> -c <RGB_HEX_COLOR> -f -d <description>
+```
+
+e.g.,
+
+```
+gh label create "priority:p1" -c FF0000 -f -d "User story or phase priority."
+```
+
+Create GitHub milestone via CLI:
+
+gh milestone create -t <name> -d <description>
+
+
+gh api \
+  --method POST \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2026-03-10" \
+  /repos/:<OWNER>/:<REPO>/milestones \
+   -f "title=v1.0"  -f "state=open" -f "description=Tracking milestone for version 1.0"
+
+gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2026-03-10" /repos/:pchemguy/:TicTacToe-PLAYGROUND-SpecKit-Copilot-GPT54/milestones -f "title=v1.0"  -f "state=open" -f "description=Tracking milestone for version 1.0"
+
+gh milestone create -t "Phase 9 - Documentation & Developer Experience" -d "Implemented-system documentation and documentation review."
+
+gh extension install valeriobelli/gh-milestone
+
+
+`https://github.com/<owner>/<repo>/issues/<GH_issue_ID>`
 
 ## Purpose
 
@@ -49,12 +113,12 @@ This file MUST be generated alongside issue creation and MUST remain consistent 
 
 Each issue MUST include labels representing:
 
-- feature scope
-- phase
-- task type (e.g., core, UI, orchestration, docs, test)
-- priority (e.g., p1, p2)
-- risk classification (if applicable)
-- user story (if applicable)
+- `feature:<feature-name>`
+- `phase:<phase-shortcut>` (e.g., `phase:us5-restart`, `phase:foundational`, `phase:docs-dx`)
+- task type (e.g., `type:core`, `type:ui`, `type:orchestration`, `type:docs`, `type:test`)
+- priority (e.g., `priority:p1`, `priority:p2`)
+- risk classification (if applicable, e.g., `risk:mvp`, `risk:blocking`)
+- user story (if applicable, e.g., `story:us1-new-match`, `story:us6-inspect-game-state`)
 
 Labels MUST be consistent across all issues.
 
@@ -71,41 +135,9 @@ This mapping MUST allow:
 
 ---
 
-## Milestones
 
-| Milestone # | Milestone Name |
-|-------------|----------------|
-| 1 | Phase 1 - Setup |
-| 2 | Phase 2 - Foundational |
-| 3 | Phase 3 - [User Story 1 / MVP] |
-| 4 | Phase 4 - [User Story 2] |
-| ... | ... |
-| N | Final Phase - Documentation & Developer Experience |
 
-> Milestones MUST align with phases defined in `tasks.md`.
 
----
-
-## Task Mapping
-
-| Task ID | GitHub Issue | Milestone | Labels |
-|--------|-------------|-----------|--------|
-| T001 | #[issue-number] | Phase 1 - Setup | `feature:[name]`, `phase:setup`, `type:setup`, `priority:p1` |
-| T002 | #[issue-number] | Phase 1 - Setup | ... |
-| T003 | #[issue-number] | Phase 2 - Foundational | ... |
-
-> Each row MUST represent a **single task → single issue mapping**.
-
----
-
-## Issue URLs
-
-| Task ID | Issue URL |
-|--------|-----------|
-| T001 | https://github.com/[owner]/[repo]/issues/[id] |
-| T002 | https://github.com/[owner]/[repo]/issues/[id] |
-
----
 
 ## Validation Requirements
 
@@ -117,8 +149,8 @@ Before completion, verify:
     - a milestone
     - required labels
 - Milestones reflect correct execution order
-- Issue count == task count
-- Mapping table and URL table are consistent
+- Issue count = task count
+- Mapping table is consistent
 
 ---
 
@@ -134,20 +166,8 @@ Before completion, verify:
     - labels MUST be applied
     - mapping MUST be persisted in this file
 
----
 
-## Relationship to Other Artifacts
 
-This file depends on:
-
-- `tasks.md` (source of truth for tasks)
-- GitHub Issues (execution layer)
-
-This file is consumed by:
-
-- implementation workflows
-- progress tracking
-- audit and validation processes
 
 ---
 
