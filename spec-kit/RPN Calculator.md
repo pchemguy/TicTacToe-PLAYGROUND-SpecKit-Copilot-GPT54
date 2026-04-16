@@ -32,8 +32,8 @@ For an RPN calculator app, this definition means “User can perform basic calcu
 | 4   | GF Proto 4 - US2 Apply Valid Tokens to the Stack (MVP Core Execution)         |
 | 5   | GF Proto 5 - US3 Inspect Current Stack (MVP Observability)                    |
 | 6   | GF Proto 6 - US4 Reject Operations With Insufficient Operands (MVP Stability) |
-| 7   | GF Proto 7 - US5 Reject Invalid Tokens and Unsupported Operations             |
-| 8   | GF Proto 8 - US6 Handle Arithmetic Domain Errors and Numeric Limits Correctly |
+| 7   | GF Proto 7 - US5 Reject Invalid Tokens & Unsupported Operations               |
+| 8   | GF Proto 8 - US6 Handle Arithmetic Domain Errors & Numeric Limits             |
 | 9   | GF Proto 9 - US7 Reset Calculator                                             |
 | 10  | GF Proto 10 - US8 Undo Last Accepted Token                                    |
 | 11  | GF Proto 11 - Documentation & Developer Experience                            |
