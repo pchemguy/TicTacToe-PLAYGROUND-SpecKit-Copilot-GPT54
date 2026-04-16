@@ -6,17 +6,17 @@ Remote: `https://github.com/pchemguy/TicTacToe-SpecKit-Copilot-GPT54.git`
 
 ## Milestones
 
-| Milestone # | Milestone |
-| --- | --- |
-| 1 | Phase 1 - Setup |
-| 2 | Phase 2 - Foundational |
-| 3 | Phase 3 - US1 New Match (MVP) |
-| 4 | Phase 4 - US2 Valid Human Move (MVP) |
-| 5 | Phase 5 - US4 Terminal Core (MVP) |
-| 6 | Phase 6 - US3 Optimal Response & Playable UI (MVP Playable) |
-| 7 | Phase 7 - US5 Restart Flow |
-| 8 | Phase 8 - US6 State Exposure |
-| 9 | Phase 9 - Documentation & Developer Experience |
+| Milestone # | Milestone                                                   |
+| ----------- | ----------------------------------------------------------- |
+| 1           | Phase 1 - Setup                                             |
+| 2           | Phase 2 - Foundational                                      |
+| 3           | Phase 3 - US1 New Match (MVP)                               |
+| 4           | Phase 4 - US2 Valid Human Move (MVP)                        |
+| 5           | Phase 5 - US4 Terminal Core (MVP)                           |
+| 6           | Phase 6 - US3 Optimal Response & Playable UI (MVP Playable) |
+| 7           | Phase 7 - US5 Restart Flow                                  |
+| 8           | Phase 8 - US6 State Exposure                                |
+| 9           | Phase 9 - Documentation & Developer Experience              |
 
 ## Task Mapping
 

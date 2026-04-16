@@ -24,3 +24,19 @@ For an RPN calculator app, this definition means “User can perform basic calcu
 | 8   | Reset Calculator                                             | User can clear all state and restart from a clean session.                                                       | convenience           | P3       |
 | 9   | Undo the Last Accepted Token                                 | User can revert the most recent accepted stack mutation.                                                         | convenience           | P3       |
 
+## Milestones 
+
+| #   | Name                                                        |
+| --- | ----------------------------------------------------------- |
+| 1   | Phase 1 - Setup                                             |
+| 2   | Phase 2 - Foundational                                      |
+| 3   | Phase 3 - US1 New Match (MVP)                               |
+| 4   | Phase 4 - US2 Valid Human Move (MVP)                        |
+| 5   | Phase 5 - US4 Terminal Core (MVP)                           |
+| 6   | Phase 6 - US3 Optimal Response & Playable UI (MVP Playable) |
+| 7   | Phase 7 - US5 Restart Flow                                  |
+| 8   | Phase 8 - US6 State Exposure                                |
+| 9   |                                                             |
+| 10  |                                                             |
+| 11  |                                                             |
+| 12  | Phase 12 - Documentation & Developer Experience             |
