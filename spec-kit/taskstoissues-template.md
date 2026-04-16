@@ -35,6 +35,97 @@ A milestone table may look like:
 
 ---
 
+I want to tackle speckit.taskstoissues.agent.md in a staged manner, starting with the core. The current prompt says use MCP server, which is a BS instruction. That goes. It should go something like the following.
+
+```
+Your objective is to create GitHub issues with structured metadata (colored labels and milestones) from tasks.md. You should use a layered strategy to maximize the chances of success.
+
+### Core Rules
+
+#### 1. One Task = One Issue
+
+- Every task MUST map to exactly one GitHub issue
+- Tasks MUST NOT be merged into a single issue
+- Issues MUST remain:
+    - small
+    - focused
+    - independently testable
+
+---
+
+#### 2. Milestones Represent Delivery Phases
+
+- Milestones MUST reflect the **execution phases** defined in `tasks.md`
+- Each issue MUST belong to exactly one milestone
+- Milestones MUST preserve:
+    - execution order
+    - MVP / tracer-bullet sequencing
+    - staged delivery model
+
+---
+
+#### 3. Labels Encode Metadata
+
+Each issue MUST include labels representing:
+
+- `feature:<feature-name>`
+- `phase:<phase-shortcut>` (e.g., `phase:us5-restart`, `phase:foundational`, `phase:docs-dx`)
+- task type (e.g., `type:core`, `type:ui`, `type:orchestration`, `type:docs`, `type:test`)
+- priority (e.g., `priority:p1`, `priority:p2`)
+- risk classification (if applicable, e.g., `risk:mvp`, `risk:blocking`)
+- user story (if applicable, e.g., `story:us1-new-match`, `story:us6-inspect-game-state`)
+
+Lables should use descriptive titles, descriptions, and smart color scheme to make it easy to distinguish between different aspects. When different values within one dimension have no inherent priority (e.g., user stories are prioritized, but priority is an explicit label, so the names of the user stories have no inherent priority) should use one color. When there is inherent priority, consider using different colors or pseudo color scale with red tones emphasizing the important end, such has high priority or high risk.
+Labels MUST be consistent across all issues.
+
+---
+
+#### 4. Traceability Is Mandatory
+
+This mapping MUST allow:
+
+- tracing any task → issue
+- tracing any issue → task
+- reconstructing delivery sequence
+- validating coverage and completeness
+
+### Tool Selection and Use
+
+1. GitHub CLI `gh` dedicated commands for
+   - labels (`gh label create <name> -c <RGB_HEX_COLOR> -f -d <description>`, e.g., `gh label create "priority:p1" -c FF0000 -f -d "User story or phase priority."`) and
+   - issues (`gh issue create -t "<name>" [-l "<label_name>"]*  -m "<milestone_name>" -F <issue_text_file OR std_dash>`)
+2. GitHub CLI extension for missing `milestone` command:
+   - try 
+     `gh milestone create -t <name> -d <description>`
+     if fails, install GH extension
+     `gh extension install valeriobelli/gh-milestone`
+     and try again. If still fails, try CLI api command
+3. GitHub CLI API
+   gh api --method POST \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2026-03-10" \
+    /repos/:<OWNER>/:<REPO>/milestones \
+    -f "title=<milestone_title>" \
+    -f "state=open" \
+    -f "description=<milestone_description>"
+4. GitHub MCP server as a fallback.
+
+### Issue Body Template
+
+TBD
+
+### Protocol
+
+1. Create all labels
+2. Create all milestones
+3. Create issues.
+```
+
+
+
+
+
+
 
 
 Create GitHub label via CLI:
