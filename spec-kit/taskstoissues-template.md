@@ -1,10 +1,39 @@
+
 # Task to Issue Mapping
 
 Feature: `[FEATURE_NAME]`  
 Repository: `[owner/repo]`  
 Remote: `[git remote URL]`
 
----
+<!-- 
+  ============================================================================
+  IMPORTANT AGENT INSTRUCTIONS:
+  The Milestones and Task Mapping tables below represent a one-shot example derived for a sample feature with
+  the following set of user stories:
+
+ - User Story 1 - Start a New Match
+ - User Story 2 - Make a Valid Human Move
+ - User Story 3 - Receive an Optimal Computer Response
+ - User Story 4 - End the Game Correctly
+ - User Story 5 - Restart From a Clean State
+ - User Story 6 - Inspect Current Game State
+
+The agent MUST replace these samples with the actual contents derived for the actual feature under development.
+
+  The /speckit.tasks command MUST replace these with actual tasks based on:
+  - User stories from spec.md (with their priorities P1, P2, P3...)
+  - Feature requirements from plan.md
+  - Entities from data-model.md
+  - Endpoints from contracts/
+  
+  Tasks MUST be organized by user story so each story can be:
+  - Implemented independently
+  - Tested independently
+  - Delivered as an MVP increment
+  
+  DO NOT keep these sample tasks in the generated tasks.md file.
+  ============================================================================
+-->
 
 ## Milestones
 
