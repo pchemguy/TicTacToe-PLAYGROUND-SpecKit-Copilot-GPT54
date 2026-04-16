@@ -177,6 +177,9 @@ For an RPN calculator app, this definition means “User can perform basic calcu
 - [ ] T025 Document the implemented architecture and separation of concerns in docs/architecture.md
 - [ ] T026 Document the implemented token model, stack semantics, evaluation rules, and error invariants in docs/calculator-rules.md
 - [ ] T027 Document the implemented testing strategy and failure-mode coverage in docs/testing.md
-- [ ] T028 Review README.md, DEVELOPMENT.md, specs/001-greenfield-proto/quickstart.md, and docs/ content against the implemented code and test workflow to remove speculation and correct mismatches
+- [ ] T028 Append the implemented feature summary to .specify/memory/progress.md, including feature name, branch name, spec directory name, and a brief scope/functionality summary for project-evolution traceability
+- [ ] T029 Review README.md, DEVELOPMENT.md, specs/001-greenfield-proto/quickstart.md, docs/ content, and .specify/memory/progress.md against the implemented code and test workflow to remove speculation and correct mismatches
 
 ---
+
+append summary to .specify/memory/progress.md (which should include for each implemented feature: feature name, branch name, spec dir name, brief summary of scope/functionality to provide LLM convenient project evolution summary and mapping to detailed per feature docs)
